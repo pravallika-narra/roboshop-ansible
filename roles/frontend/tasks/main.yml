@@ -1,4 +1,9 @@
-- name: Frontedd
+- name: Install nginx
   ansible.builtin.yum:
     name: nginx
     state: installed
+
+- name: Removing directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
