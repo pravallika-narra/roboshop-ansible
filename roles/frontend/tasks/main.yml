@@ -7,3 +7,26 @@
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
+
+- name: creating directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
+
+- name: downloading and extracting frontend content
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+
+- name: copy file for config
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: starting service
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: yes
+
