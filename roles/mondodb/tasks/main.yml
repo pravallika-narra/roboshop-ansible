@@ -16,7 +16,7 @@
 
 - name: starting service
   ansible.builtin.systemd:
-    name: mongodb
+    name: mondodb
     state: restarted
     enabled: yes
 
