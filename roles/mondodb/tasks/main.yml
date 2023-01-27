@@ -10,7 +10,7 @@
 
 - name: replacing 127.0.0.1
   ansible.builtin.replace:
-    src: /etc/mongod.conf
+    path: /etc/mongod.conf
     regex: '127.0.0.1'
     replace: '0.0.0.0'
 
