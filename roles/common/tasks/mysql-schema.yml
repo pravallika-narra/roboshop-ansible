@@ -15,5 +15,5 @@
     encoding: latin1
     target: /app/schema/{{component}}.sql
     login_host: mysql-dev.devops-b70.online
-    login_user: uroot
-    login_password: -pRoboShop@1
+    login_user: root
+    login_password: "{{root_mysql_password}}"
