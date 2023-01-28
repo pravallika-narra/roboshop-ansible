@@ -38,7 +38,7 @@
 - name: starting service
   ansible.builtin.systemd:
     name: catalogue
-    demon_reload: yes
+    daemon_reload: yes
     enabled: yes
     state: restarted
 
