@@ -42,21 +42,8 @@
     enabled: yes
     state: restarted
 
-- name: copy file for config
-  ansible.builtin.copy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongo.repo
-
-- name: Install mongodb
-  ansible.builtin.yum:
-    name: mongodb-org-shell
-    state: installed
-
 - name: load schema
-  community.mongodb.mongodb_shell:
-    login_host: mongodb-dev.devops-b70.online
-    file: "/app/schema/{{component}}.js"
-    idempotent: yes
-
+  ansible.builtin.include_tasks: "{{schema_name}}.yml"
+  when: schema_load
 
 
