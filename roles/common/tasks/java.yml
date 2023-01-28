@@ -1,0 +1,19 @@
+- name: install maven
+  ansible.builtin.yum:
+    name: maven
+    state: installed
+
+- name: appre
+  ansible.builtin.include_tasks: "app-preq.yml"
+
+- name: maven build
+  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
+  args:
+    chdir: /app
+
+- name: systemdl
+  ansible.builtin.include_tasks: "systemd.yml"
+
+- name: load schema
+  ansible.builtin.include_tasks: "{{schema_name}}.yml"
+  when: schema_load
