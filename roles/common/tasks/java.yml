@@ -4,7 +4,7 @@
     state: installed
 
 - name: appre
-  ansible.builtin.include_tasks: "app-preq.yml"
+  ansible.builtin.include_tasks: "app-preeq.yml"
 
 - name: maven build
   ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
